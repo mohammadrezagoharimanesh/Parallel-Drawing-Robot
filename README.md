@@ -62,7 +62,7 @@ The current source configures the serial port as `COM5` at 9600 baud. Change thi
 
 ## Attribution
 
-- Designer: Mohammad Reza Gohari-Manesh
+- Designer: Mohammadreza Goharimanesh
 - Supervisor: Dr. Masoud Gohari-Manesh
 
 The university affiliation is intentionally omitted until its official English name is confirmed.
