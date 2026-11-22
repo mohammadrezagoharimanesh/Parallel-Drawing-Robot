@@ -1,0 +1,8 @@
+numpy
+matplotlib
+pyserial
+ezdxf
+opencv-python
+Pillow
+arabic-reshaper
+python-bidi
