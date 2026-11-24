@@ -173,15 +173,15 @@ def text_polylines(txt):
 def text_to_path():
     txt = text_entry.get()
     if not txt:
-        messagebox.showwarning("خطا", "لطفاً متن را وارد کنید")
+        messagebox.showwarning("Error", "Please enter some text")
         return
     polys = text_polylines(txt)
     if not polys:
-        messagebox.showwarning("خطا", "متن قابل تشخیص نیست")
+        messagebox.showwarning("Error", "The text could not be recognized")
         return
     bad = trace(polys)
     if bad:
-        messagebox.showwarning("هشدار", f"{bad} نقطه خارج از فضای کاری بود")
+        messagebox.showwarning("Warning", f"{bad} points were outside the workspace")
 
 
 def load_dxf():
@@ -193,29 +193,29 @@ def load_dxf():
                            [e.dxf.end.x, e.dxf.end.y + 120]])
                  for e in doc.modelspace().query('LINE')]
         trace(polys)
-        messagebox.showinfo("موفقیت", "DXF ترسیم شد")
+        messagebox.showinfo("Success", "DXF drawn successfully")
     except Exception as e:
-        messagebox.showerror("خطا", str(e))
+        messagebox.showerror("Error", str(e))
 
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.title("گوهری منش")
+    root.title("Goharimanesh")
     root.geometry("850x550")
 
     ctrl = tk.Frame(root, width=320, padx=10, pady=10)
     ctrl.pack(side=tk.LEFT, fill=tk.Y)
 
-    tk.Label(ctrl, text="متن:").pack(anchor=tk.W)
+    tk.Label(ctrl, text="Text:").pack(anchor=tk.W)
     text_entry = tk.Entry(ctrl, width=35, font=("Tahoma", 11))
     text_entry.pack(pady=5)
 
-    tk.Button(ctrl, text="ترسیم متن", command=text_to_path, bg="#4CAF50", fg="white", width=25).pack(pady=5)
-    tk.Button(ctrl, text="بارگذاری DXF", command=load_dxf, bg="#2196F3", fg="white", width=25).pack(pady=5)
+    tk.Button(ctrl, text="Draw Text", command=text_to_path, bg="#4CAF50", fg="white", width=25).pack(pady=5)
+    tk.Button(ctrl, text="Load DXF", command=load_dxf, bg="#2196F3", fg="white", width=25).pack(pady=5)
     tk.Label(ctrl, text="").pack()
-    tk.Label(ctrl, text="طراح: محمدرضا گوهری‌منش", font=("Tahoma", 10, "bold")).pack(anchor=tk.W)
-    tk.Label(ctrl, text="استاد: دکتر مسعود گوهری‌منش", font=("Tahoma", 10, "bold")).pack(anchor=tk.W)
-    tk.Label(ctrl, text="دانشگاه: تربت حیدریه", font=("Tahoma", 10, "bold")).pack(anchor=tk.W)
+    tk.Label(ctrl, text="Designer: Mohammadreza Goharimanesh", font=("Tahoma", 10, "bold")).pack(anchor=tk.W)
+    tk.Label(ctrl, text="Supervisor: Dr. Masoud Goharimanesh", font=("Tahoma", 10, "bold")).pack(anchor=tk.W)
+    tk.Label(ctrl, text="University: Torbat Heydarieh", font=("Tahoma", 10, "bold")).pack(anchor=tk.W)
 
     plot_frame = tk.Frame(root)
     plot_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
